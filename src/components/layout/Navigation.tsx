@@ -3,19 +3,19 @@ import classes from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <div className={classes.Navigation}>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Inicio</NavLink>
-          </li>
-          <li>
-            <NavLink to="/pagar">Pago</NavLink>
-          </li>
-          <li>Cristian: <button>salir</button> </li>
-        </ul>
-      </nav>
-    </div>
+    <nav className={classes.nav}>
+      <ul>
+        <li>
+          <NavLink activeClassName={classes.active} to="/" exact>Inicio</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName={classes.active} to="/pagar" exact>Pago</NavLink>
+        </li>
+        <li>
+          <span className={classes.usuario}>Cristian Gozalez:</span> <button>salir</button>{" "}
+        </li>
+      </ul>
+    </nav>
   );
 };
 

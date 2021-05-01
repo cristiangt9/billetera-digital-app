@@ -5,16 +5,18 @@ import Navigation from "./Navigation";
 
 const Layout = (props: propsNavInter) => {
   return (
-    <div className={classes.layout}>
+    <>
       <header className={classes.header}>
-        <Link to="/" className={classes.logo}>
-          Billetera Digital
-        </Link>
+        <div className={classes.logo}>
+          <Link to="/">
+            Billetera Digital
+          </Link>
+        </div>
         <Navigation />
       </header>
-      <main className={classes.content}>{props.children}</main>
-      <footer>Ningun derecho reservado 2021</footer>
-    </div>
+      <main className={classes.main}>{props.children}</main>
+      <footer className={classes.footer}>Ningún derecho reservado 2021</footer>
+    </>
   );
 };
 

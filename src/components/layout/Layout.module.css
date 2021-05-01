@@ -1,0 +1,58 @@
+.header {
+  height: 5rem;
+  display: flex;
+  padding: 0 10%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f14c00;
+  font-size: 12px;
+}
+
+.main {
+  margin: 3rem auto;
+  height: 300px;
+  overflow: scroll;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  width: 90%;
+}
+
+.footer {
+  height: 3rem;
+  padding: 10px 10%;
+  align-items: center;
+  text-align: center;
+  background-color: #f14c00;
+  color: white;
+}
+.logo > a {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+@media (min-height: 400px) {
+
+    .main{
+        height: 350px;
+    }
+
+}
+@media (min-height: 401px) {
+
+    .main{
+        height: 400px;
+    }
+
+}
+@media (min-height: 700px) {
+    .main{
+        height: 550px;
+    }
+}
+@media (min-height: 1000px) {
+    .main{
+        height: 750px;
+    }
+}
