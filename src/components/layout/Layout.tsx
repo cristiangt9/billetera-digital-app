@@ -1,9 +1,11 @@
+
 import { Link } from "react-router-dom";
 import { propsNavInter } from "../../CustomInterface";
 import classes from "./Layout.module.css";
 import Navigation from "./Navigation";
 
 const Layout = (props: propsNavInter) => {
+  
   return (
     <>
       <header className={classes.header}>

@@ -1,18 +1,17 @@
 import { user } from "../../CustomInterface";
-import { SET_USUARIO, SET_TOKEN } from "../actions/user.actions";
-
+import * as Actions from "../actions";
 const initialState: user = {
   nombres: "",
   documento: "",
   celular: "",
   email: "",
   saldo: 0,
-  token: "string",
+  token: "",
 };
 
 const reducerUser = (state = initialState, { type, payload }: any) => {
   switch (type) {
-    case SET_USUARIO:
+    case Actions.SET_USUARIO:
       return {
         ...state,
         nombres: payload.nombres,
@@ -20,10 +19,21 @@ const reducerUser = (state = initialState, { type, payload }: any) => {
         celular: payload.celular,
         email: payload.email,
       };
-    case SET_TOKEN:
+    case Actions.SET_TOKEN:
       return {
         ...state,
-        token: payload
+        token: payload,
+      };
+    case Actions.SET_DOCUMENTO_CELULAR:
+      return {
+        ...state,
+        documento: payload.documento,
+        celular: payload.celular,
+      };
+    case Actions.SET_SALDO:
+      return {
+        ...state,
+        saldo: payload,
       };
     default:
       return state;

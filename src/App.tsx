@@ -6,6 +6,7 @@ import Ingresar from "./pages/Ingresar";
 import Pagar from "./pages/Pagar";
 
 function App() {
+  
   return (
     <Layout>
       <Switch>

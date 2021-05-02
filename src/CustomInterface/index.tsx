@@ -8,5 +8,9 @@ export interface user {
   celular: string;
   email?: string;
   saldo: number;
-  token: string; 
+  token: string;
+}
+
+export interface stateStore {
+  user: user;
 }

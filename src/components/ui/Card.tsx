@@ -3,7 +3,7 @@ interface CardProps {
     children: React.ReactNode,
     className?: string
 }
-const Card: React.FC<CardProps> = (props: any) => {
+const Card = (props: CardProps) => {
   return <div className={`${classes.card} ${props.className}`}>{props.children}</div>;
 };
 

@@ -6,7 +6,7 @@ const Navigation = () => {
     <nav className={classes.nav}>
       <ul>
         <li>
-          <NavLink activeClassName={classes.active} to="/" exact>Inicio</NavLink>
+          <NavLink activeClassName={classes.active} to="/inicio" exact>Inicio</NavLink>
         </li>
         <li>
           <NavLink activeClassName={classes.active} to="/pagar" exact>Pago</NavLink>
