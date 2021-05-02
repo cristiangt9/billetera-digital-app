@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import Inicio from "./pages/Inicio";
 import Ingresar from "./pages/Ingresar";
 import Pagar from "./pages/Pagar";
+import Registrar from "./pages/Registrar";
 
 function App() {
   
@@ -21,6 +22,9 @@ function App() {
         </Route>
         <Route path="/ingresar" exact>
           <Ingresar/>
+        </Route>
+        <Route path="/registrar" exact>
+          <Registrar/>
         </Route>
         <Route path='*'>
           <Redirect to='/' />

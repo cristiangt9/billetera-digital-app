@@ -1,35 +1,40 @@
+import RegistrarForm from "../components/registro/RegistrarForm";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import LoginForm from "../components/login/LoginForm";
 import useAxioshttp from "../hooks/use-axioshttp";
-import { set_documento_celular, set_token } from "../store/actions";
+import { set_token, set_usuario } from "../store/actions";
 
-const Ingresar = () => {
+const Registrar = () => {
   const { isLoading, error, sendRequest } = useAxioshttp();
   const history = useHistory();
   const dispatch = useDispatch();
   const processData = (response: any): void => {
     dispatch(set_token(response.data.token));
-    history.push('/inicio');
+    history.push("/inicio");
   };
   const handlerLogin = (form: any) => {
-    dispatch(set_documento_celular(form.documento, form.celular));
+    dispatch(
+      set_usuario(form.nombres, form.documento, form.celular, form.email)
+    );
     sendRequest(
       {
         method: "POST",
-        url: "users/login",
+        url: "users",
         data: form,
       },
       processData
     );
   };
-
   return (
     <div>
-      <h1>Ingresar</h1>
-      <LoginForm isLoading={isLoading} onLogin={handlerLogin} error={error} />
+      <h1>Registrar</h1>
+      <RegistrarForm
+        isLoading={isLoading}
+        onLogin={handlerLogin}
+        error={error}
+      />
     </div>
   );
 };
 
-export default Ingresar;
+export default Registrar;
