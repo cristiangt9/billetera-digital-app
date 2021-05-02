@@ -9,8 +9,7 @@ const Ingresar = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const processData = (response: any): void => {
-    console.log(response);
-    dispatch(set_token(response.token));
+    dispatch(set_token(response.data.token));
     history.push('/inicio');
   };
   const handlerLogin = (form: any) => {

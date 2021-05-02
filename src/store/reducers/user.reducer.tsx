@@ -1,6 +1,6 @@
-import { user } from "../../CustomInterface";
+import { userInterface } from "../../CustomInterface";
 import * as Actions from "../actions";
-const initialState: user = {
+const initialState: userInterface = {
   nombres: "",
   documento: "",
   celular: "",

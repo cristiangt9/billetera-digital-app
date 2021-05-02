@@ -10,16 +10,17 @@ import { set_saldo } from "../store/actions";
 import classes from "./Inicio.module.css";
 
 const Inicio = () => {
-  const pagarClickHandler = (): void => {};
   const user = useSelector((state: stateStore) => state.user);
-  const { documento, celular } = user;
   const history = useHistory();
+  const { documento, celular } = user;
   const dispatch = useDispatch();
   const { isLoading, error, sendRequest } = useAxioshttp();
-
+  const pagarClickHandler = (): void => {
+    history.push("/pagar");
+  };
   useEffect(() => {
     const processData = (response: any) => {
-      dispatch(set_saldo(parseInt(response.saldo)));
+      dispatch(set_saldo(parseInt(response.data.saldo)));
     };
     sendRequest(
       {

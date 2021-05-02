@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import { propsNavInter } from "../../CustomInterface";
+import Modal from "../ui/Modal";
 import classes from "./Layout.module.css";
 import Navigation from "./Navigation";
 
@@ -8,6 +9,7 @@ const Layout = (props: propsNavInter) => {
   
   return (
     <>
+      <Modal/>
       <header className={classes.header}>
         <div className={classes.logo}>
           <Link to="/">

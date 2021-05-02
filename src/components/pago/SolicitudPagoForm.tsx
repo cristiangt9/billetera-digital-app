@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import useAxioshttp from "../../hooks/use-axioshttp";
 import Card from "../ui/Card";
 import LoadingSpinner from "../ui/LoadingSpinner";
@@ -7,7 +6,6 @@ import LoadingSpinner from "../ui/LoadingSpinner";
 import classes from "./SolicitudPagoForm.module.css";
 
 const SolicitudPagoForm = (props: any) => {
-
   const { isLoading, error, sendRequest } = useAxioshttp();
   const processData = (response: any): void => {
     props.onResponse();
@@ -24,14 +22,14 @@ const SolicitudPagoForm = (props: any) => {
 
     // validate here
 
-      sendRequest(
-        {
-          method: "POST",
-          url: "transacciones",
-          data: {tipo: 'solicitudPago',...form, token: props.token},
-        },
-        processData
-      );
+    sendRequest(
+      {
+        method: "POST",
+        url: "transacciones",
+        data: { tipo: "solicitudPago", ...form, token: props.token },
+      },
+      processData
+    );
   }
 
   const changeHandler = (event: any) => {
@@ -86,9 +84,18 @@ const SolicitudPagoForm = (props: any) => {
             />
           </div>
 
-          <div className={classes.actions}>
-            <button className="btn" disabled={props.enviado}>Pagar</button>
-          </div>
+          {!props.enviado ? (
+            <div className={classes.actions}>
+              <button className="btn" disabled={props.enviado}>
+                Pagar
+              </button>
+            </div>
+          ) : (
+            <p>
+              Hemos enviado un token a tu correo. Ingresalo a continuación para
+              finalizar la transacción
+            </p>
+          )}
         </form>
       </Card>
     </>

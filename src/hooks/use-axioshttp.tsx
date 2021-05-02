@@ -39,7 +39,7 @@ const useAxioshttp = () => {
     })
       .then((response) => {
         response.data.success
-          ? processData(response.data.data)
+          ? processData(response.data)
           : setError({
               onError: true,
               message: response.data.title,

@@ -1,13 +1,19 @@
 import { useState } from "react";
+import useAxioshttp from "../../hooks/use-axioshttp";
 import Card from "../ui/Card";
 import LoadingSpinner from "../ui/LoadingSpinner";
 
-import classes from "./LoginForm.module.css";
+import classes from "./SolicitudPagoForm.module.css";
 
-const LoginForm = (props: any) => {
+const ConfirmarPagoForm = (props: any) => {
+
+  const { isLoading, error, sendRequest } = useAxioshttp();
+  const processData = (response: any): void => {
+    props.onResponse(response);
+  };
+
   const [form, setForm] = useState({
-    documento: "",
-    celular: "",
+    tokenConfirmacion: "",
   });
 
   function submitFormHandler(event: any) {
@@ -15,7 +21,14 @@ const LoginForm = (props: any) => {
 
     // validate here
 
-    props.onLogin(form);
+      sendRequest(
+        {
+          method: "POST",
+          url: "transacciones",
+          data: {tipo: 'confirmacionPago',...form, token: props.token},
+        },
+        processData
+      );
   }
 
   const changeHandler = (event: any) => {
@@ -24,44 +37,32 @@ const LoginForm = (props: any) => {
       [event.target.name]: event.target.value,
     }));
   };
-  if (props.error.onError)
+  if (error.onError)
     return <section className="centered">{props.error.message}</section>;
-    
   return (
     <>
       <Card>
         <form className={classes.form} onSubmit={submitFormHandler}>
-          {props.isLoading && (
+          {isLoading && (
             <div className={classes.loading}>
               <LoadingSpinner />
             </div>
           )}
 
           <div className={classes.control}>
-            <label htmlFor="documento">Documento</label>
+            <label htmlFor="tokenConfirmacion">Token de confimación</label>
             <input
               type="text"
-              id="documento"
-              name="documento"
+              id="tokenConfirmacion"
+              name="tokenConfirmacion"
               onChange={changeHandler}
-              value={form.documento}
-              required
-            />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="celular">Celular</label>
-            <input
-              type="text"
-              id="celular"
-              name="celular"
-              onChange={changeHandler}
-              value={form.celular}
-              required
+              value={form.tokenConfirmacion}
+              disabled={props.enviado}
             />
           </div>
 
           <div className={classes.actions}>
-            <button className="btn">Ingresar</button>
+            {!props.enviado && <button className="btn" disabled={props.enviado}>Confirmar Pago</button>}
           </div>
         </form>
       </Card>
@@ -69,4 +70,4 @@ const LoginForm = (props: any) => {
   );
 };
 
-export default LoginForm;
+export default ConfirmarPagoForm;
