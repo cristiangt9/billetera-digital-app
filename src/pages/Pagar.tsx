@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import ConfirmarPagoForm from "../components/pago/ConfirmarPago";
 import SolicitudPagoForm from "../components/pago/SolicitudPagoForm";
-import Card from "../components/ui/Card";
 import { stateStore } from "../CustomInterface";
 import { hide_modal, show_modal } from "../store/actions";
 import classes from "./Pagar.module.css";
@@ -16,7 +15,7 @@ const Pagar = () => {
   const dispatch = useDispatch();
   const closeModalHandler = () => {
     dispatch(hide_modal());
-    history.push('/inicio');
+    history.push("/inicio");
   };
 
   const solicitudResponseHandler = () => {
@@ -41,20 +40,19 @@ const Pagar = () => {
 
   return (
     <div className={classes.Pagar}>
-      <Card className={classes.saldoCard}>
-        <SolicitudPagoForm
-          onResponse={solicitudResponseHandler}
-          enviado={showInputTokenConfirm}
+      <h1>Pagar</h1>
+      <SolicitudPagoForm
+        onResponse={solicitudResponseHandler}
+        enviado={showInputTokenConfirm}
+        token={user.token}
+      />
+      {showInputTokenConfirm && (
+        <ConfirmarPagoForm
+          onResponse={confirmacionResponseHandler}
           token={user.token}
+          enviado={isSendedTokenConfirm}
         />
-        {showInputTokenConfirm && (
-          <ConfirmarPagoForm
-            onResponse={confirmacionResponseHandler}
-            token={user.token}
-            enviado={isSendedTokenConfirm}
-          />
-        )}
-      </Card>
+      )}
     </div>
   );
 };

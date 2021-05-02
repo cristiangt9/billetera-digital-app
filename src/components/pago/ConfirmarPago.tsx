@@ -41,7 +41,7 @@ const ConfirmarPagoForm = (props: any) => {
     return <section className="centered">{props.error.message}</section>;
   return (
     <>
-      <Card>
+      <Card className={classes.Card}>
         <form className={classes.form} onSubmit={submitFormHandler}>
           {isLoading && (
             <div className={classes.loading}>

@@ -31,7 +31,7 @@ const RegistrarForm = (props: any) => {
     
   return (
     <>
-      <Card>
+      <Card className={classes.Card}>
         <form className={classes.form} onSubmit={submitFormHandler}>
           {props.isLoading && (
             <div className={classes.loading}>

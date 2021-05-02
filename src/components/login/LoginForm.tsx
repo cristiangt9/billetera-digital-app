@@ -29,7 +29,7 @@ const LoginForm = (props: any) => {
     
   return (
     <>
-      <Card>
+      <Card className={classes.loginCard}>
         <form className={classes.form} onSubmit={submitFormHandler}>
           {props.isLoading && (
             <div className={classes.loading}>
