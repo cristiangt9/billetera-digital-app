@@ -1,9 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { stateStore } from "../../CustomInterface";
+import { remove_usuario } from "../../store/actions";
 import classes from "./Navigation.module.css";
 
 const Navigation = () => {
+const dispatch = useDispatch();
+  const logoutClickHandler = () => {
+    dispatch(remove_usuario());
+  }
   const user = useSelector((state: stateStore) => state.user);
   let content = (
     <ul>
@@ -33,8 +38,8 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <span className={classes.usuario}>Cristian Gozalez:</span>{" "}
-          <button>salir</button>{" "}
+          <span className={classes.usuario}>{user.nombres}:</span>{" "}
+          <button onClick={logoutClickHandler}>salir</button>{" "}
         </li>
       </ul>
     );

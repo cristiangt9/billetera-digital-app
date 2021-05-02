@@ -6,7 +6,7 @@ import Card from "../components/ui/Card";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import { stateStore } from "../CustomInterface";
 import useAxioshttp from "../hooks/use-axioshttp";
-import { set_saldo } from "../store/actions";
+import { set_saldo_nombres } from "../store/actions";
 import classes from "./Inicio.module.css";
 
 const Inicio = () => {
@@ -20,7 +20,7 @@ const Inicio = () => {
   };
   useEffect(() => {
     const processData = (response: any) => {
-      dispatch(set_saldo(parseInt(response.data.saldo)));
+      dispatch(set_saldo_nombres(parseInt(response.data.item.saldo), response.data.item.nombres));
     };
     sendRequest(
       {

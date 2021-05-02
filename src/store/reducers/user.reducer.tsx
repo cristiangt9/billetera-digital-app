@@ -30,11 +30,14 @@ const reducerUser = (state = initialState, { type, payload }: any) => {
         documento: payload.documento,
         celular: payload.celular,
       };
-    case Actions.SET_SALDO:
+    case Actions.SET_SALDO_NOMBRES:
       return {
         ...state,
-        saldo: payload,
+        saldo: payload.saldo,
+        nombres: payload.nombres,
       };
+    case Actions.REMOVE_USUARIO:
+      return {...initialState};
     default:
       return state;
   }
